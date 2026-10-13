@@ -13,7 +13,10 @@ def plot_land_use(land_use: np.ndarray, path: str) -> None:
     colors = ["#c2b280", "#444444", "#3c8d0d", "#2a6fbb"]
     cmap = ListedColormap(colors)
     plt.figure(figsize=(5, 5))
-    plt.imshow(land_use, cmap=cmap, interpolation="nearest")
+    plt.imshow(
+        land_use, cmap=cmap, interpolation="nearest",
+        vmin=LAND_RURAL - 0.5, vmax=LAND_WATER + 0.5,
+    )
     plt.title("Uso del suelo")
     cbar = plt.colorbar(ticks=[LAND_RURAL, LAND_URBAN, LAND_VEG, LAND_WATER])
     cbar.ax.set_yticklabels([
